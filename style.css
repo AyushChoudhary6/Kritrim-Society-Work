@@ -1,7 +1,8 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    background-color: #d5c8d6;
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,0.7288165266106443) 0%, rgba(148,187,233,0.510329131652661) 67%);
     margin: 0;
     padding: 0;
     animation: fadeIn 1s ease-in-out;
@@ -17,7 +18,7 @@ body {
     }
 }
 
-/* Navbar container */
+/* Navbar container with Slide-in Animation */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -27,6 +28,21 @@ body {
     text-decoration: none;
     list-style: none;
     align-items: end;
+    transform: translateY(-50px);
+    opacity: 0;
+    animation: slideDown 0.8s ease-in-out forwards;
+}
+
+/* Navbar Slide-in Animation */
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 /* Navbar logo & name appear first */
@@ -85,15 +101,18 @@ body {
     padding: 0;
 }
 
-/* Delay each button's appearance */
+/* Navbar button styles */
 .navbar ul li {
     cursor: pointer;
     font-weight: bold;
     margin-right: 10px;
-    padding-bottom: 5px;
+    padding: 10px 15px;
+    border-radius: 5px;
     opacity: 0;
     transform: translateY(-10px);
     animation: fadeInButtons 0.6s ease-in-out forwards;
+    position: relative;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out, background 0.3s ease-in-out;
 }
 
 /* Button animations come one by one */
@@ -121,6 +140,54 @@ body {
         transform: translateY(0);
     }
 }
+
+/* Animated Underline on Hover */
+.navbar ul li::after {
+   content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -3px;
+    width: 0%;
+    height: 3px;
+    background: rgb(238,174,202);
+    transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+}
+
+/* Hover Effects */
+.navbar ul li:hover {
+    background: rgb(238,174,202);
+    color: white;
+    /* text-shadow: 0px 0px 10px rgba(52, 52, 112, 0.8); */
+    transform: scale(1.1);
+}
+
+
+
+.navbar ul li:hover::after {
+    transform: scaleX(1);
+    width: 100%;
+    left: 0;
+}
+
+/* Gradient Hover Effect for Navbar Links */
+.navbar ul li {
+    /* background: linear-gradient(90deg, #ff5733, #ffbd33); */
+    background:black;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease-in-out;
+    
+}
+
+.navbar ul li:hover {
+    background: linear-gradient(90deg, rgb(203, 100, 134), rgb(255, 189, 51));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transform: scale(1.1);
+   
+    
+}
+
 
 h1 {
     font-size: 2.5em;
@@ -153,7 +220,7 @@ p {
     padding: 20px;
 }
 
-/* Keeping Previous Image Hover Effect */
+/* Image Hover Effect */
 .images div {
     border-radius: 10px;
     padding: 15px;
@@ -210,40 +277,7 @@ h5 {
     }
 }
 
-/* Footer text animation */
-.footer h4 {
-    margin-bottom: 15px;
-    font-size: 1.5em;
-    opacity: 0;
-    animation: fadeInText 1s ease-in-out forwards 1.2s;
-}
-
 /* Footer Social Icons */
-/* Footer Social Icons */
-.footer a {
-    margin: 0 10px;
-    display: inline-block;
-    opacity: 0;
-    /* transform: translateY(-10px); */
-    animation: fadeInIcons 0.4s ease-in-out forwards;
-}
-
-
-
-/* Icon Fade-in & Slide-down Animation */
-@keyframes fadeInIcons {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-
-/* Hover Effect on Circular Icons */
 .footer img {
     width: 40px;
     height: 40px;
@@ -256,9 +290,7 @@ h5 {
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
 }
 
-/* Square Icons Styling */
-
-
+/* Responsive */
 @media (max-width: 768px) {
     .images {
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -268,8 +300,6 @@ h5 {
         height: 250px;
     }
 }
-
-
 
 /* Smooth Scrolling */
 * {
