@@ -316,3 +316,75 @@ h5 {
 * {
     scroll-behavior: smooth;
 }
+
+
+/* Responsive Navbar */
+@media (max-width: 1024px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 20px;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .navbar ul li {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+    }
+}
+
+/* Adjustments for Tablets */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    .images {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Adjustments for Mobile Screens */
+@media (max-width: 480px) {
+    .navbar {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .navbar ul li {
+        width: 90%;
+        padding: 8px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    h2 {
+        font-size: 1.2em;
+    }
+
+    p {
+        font-size: 1em;
+        width: 95%;
+    }
+
+    .images {
+        grid-template-columns: 1fr;
+    }
+}
